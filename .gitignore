@@ -1,0 +1,7 @@
+#Eclipse specific project folders
+/Debug
+/Release
+
+#Eclipse specific project files
+.cproject
+.project

@@ -8,7 +8,19 @@
 #include "bpipe/types.hpp"
 
 namespace bpipe {
+
+	/*
+	 * Minimal description of a parameter
+	 * - identifier: for retrieval
+	 * - type: expected type for this parameter
+	 */
     struct ParameterDescription {
+    	ParameterDescription( ) = default;
+    	ParameterDescription(const std::string& id, types::ParameterType t)
+    		: identifier(id), type(t)
+    	{
+    	}
+
         std::string          identifier;
         types::ParameterType type;
     };

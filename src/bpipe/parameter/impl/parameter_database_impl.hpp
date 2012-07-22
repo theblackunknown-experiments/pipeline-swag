@@ -7,8 +7,8 @@
 #include <vector>
 #include <map>
 
-#include "bpipe/parameter_description.hpp"
-#include "bpipe/parameterfwd.hpp"
+#include "bpipe/parameter/parameter_description.hpp"
+#include "bpipe/parameter/parameterfwd.hpp"
 
 namespace bpipe {
     struct ParameterDescription;

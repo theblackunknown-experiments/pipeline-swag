@@ -1,6 +1,7 @@
 #Eclipse specific project folders
 /Debug
 /Release
+/.settings
 
 #Eclipse specific project files
 .cproject

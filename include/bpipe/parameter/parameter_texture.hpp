@@ -15,9 +15,9 @@
 #include <utility>
 #include <memory>
 
-#include "bpipe/types.hpp"
+#include "bpipe/type.hpp"
 
-#include "bpipe/parameter.hpp"
+#include "bpipe/parameter/parameter.hpp"
 
 namespace bpipe {
 
@@ -29,7 +29,7 @@ namespace bpipe {
 	 * - ByteDepth : Precision range used for channel storage (8, 16, 32 bits)
 	 */
 	template< typename DataContainer >
-	class TextureParameter : public ValueParameter< DataContainer, types::Texture>
+	class TextureParameter : public ValueParameter< DataContainer, type::Texture>
 	{
 	public:
 		typedef std::pair<std::size_t, std::size_t> Dimension;
@@ -37,12 +37,12 @@ namespace bpipe {
 		typedef uint32_t                            Channels;
 		typedef std::size_t                         ByteDepth;
 
-		TextureParameter(
+		PIPE_API_ENTRY explicit TextureParameter(
 				const std::string& identifier,
 				const std::size_t width, const std::size_t height,
 				const Type type, const Channels channels, const ByteDepth byte_depth,
 				const DataContainer& data)
-		  : ValueParameter<DataContainer, types::Texture>(identifier, data)
+		  : ValueParameter<DataContainer, type::Texture>(identifier, data)
 		  , mDimension( std::make_pair(width, height) )
 		  , mType( type )
 		  , mChannels( channels )
@@ -50,39 +50,39 @@ namespace bpipe {
 		  {
 		  }
 
-		~TextureParameter( ) = default;
+		PIPE_API_ENTRY ~TextureParameter( ) = default;
 
-		std::size_t getWidth( ) const
+		PIPE_API_ENTRY std::size_t getWidth( ) const
 		{
 			return mDimension.first;
 		}
 
-		std::size_t getHeight( ) const
+		PIPE_API_ENTRY std::size_t getHeight( ) const
 		{
 			return mDimension.second;
 		}
 
-		Type getType( ) const
+		PIPE_API_ENTRY Type getType( ) const
 		{
 			return mType;
 		}
 
-		Type getChannels( ) const
+		PIPE_API_ENTRY Type getChannels( ) const
 		{
 			return mChannels;
 		}
 
-		ByteDepth getByteDepth( ) const
+		PIPE_API_ENTRY ByteDepth getByteDepth( ) const
 		{
 			return mByteDepth;
 		}
 
-		std::string getSourceFilepath() const
+		PIPE_API_ENTRY std::string getSourceFilepath() const
 		{
 			return mSourceFilepath;
 		}
 
-		void setSourceFilepath(const std::string& sourceFilepath)
+		PIPE_API_ENTRY void setSourceFilepath(const std::string& sourceFilepath)
 		{
 			mSourceFilepath = sourceFilepath;
 		}

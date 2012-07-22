@@ -6,7 +6,7 @@
 #include <string>
 #include <memory>
 
-#include "bpipe/types.hpp"
+#include "bpipe/type.hpp"
 
 namespace bpipe {
 
@@ -18,7 +18,7 @@ namespace bpipe {
 	 */
     template<
         typename             DataType,
-        types::ParameterType ApplicationType>
+        type::ParameterType ApplicationType>
     class ValueParameter
     {
         public:
@@ -28,7 +28,7 @@ namespace bpipe {
             /*
              * Build a Parameter by identifier and value
              */
-            ValueParameter (
+			PIPE_API_ENTRY explicit ValueParameter (
                     const std::string& identifier,
                     const ValueType& default_value = ValueType())
                 : mIdentifier( identifier )
@@ -37,18 +37,18 @@ namespace bpipe {
             {
             }
 
-            ValueParameter ( const ValueParameter& rhs ) = default;
+			PIPE_API_ENTRY ValueParameter ( const ValueParameter& rhs ) = default;
 
-            ValueParameter& operator=( const ValueParameter& rhs ) = default;
+			PIPE_API_ENTRY ValueParameter& operator=( const ValueParameter& rhs ) = default;
 
-            virtual ~ValueParameter () { };
+			PIPE_API_ENTRY virtual ~ValueParameter () { };
 
-            std::string getIdentifier( ) const
+			PIPE_API_ENTRY std::string getIdentifier( ) const
             {
                 return mIdentifier;
             }
 
-            types::ParameterType getType( ) const
+			PIPE_API_ENTRY type::ParameterType getType( ) const
             {
                 return ApplicationType;
             }
@@ -57,7 +57,7 @@ namespace bpipe {
              * Set embedded value
              * @note : call to this method will break any existing dependency
              */
-            ValueType setValue( const ValueType&& newValue )
+			PIPE_API_ENTRY ValueType setValue( const ValueType&& newValue )
             {
                 ValueType old( std::move(newValue) );
                 std::swap(old, mValue);
@@ -65,7 +65,7 @@ namespace bpipe {
                 return std::move(old);
             }
 
-            ValueType setValue( const ValueType& newValue )
+			PIPE_API_ENTRY ValueType setValue( const ValueType& newValue )
             {
                 ValueType old( newValue );
                 std::swap(old, mValue);
@@ -75,7 +75,7 @@ namespace bpipe {
             /*
              * Request embedded value
              */
-            ValueType getValue( ) const
+			PIPE_API_ENTRY ValueType getValue( ) const
             {
                 return mValue;
             }
@@ -83,7 +83,7 @@ namespace bpipe {
             /*
              * Set this parameter's dependency
              */
-            WeakPointerDependency setDependency( const WeakPointerDependency& dep )
+			PIPE_API_ENTRY WeakPointerDependency setDependency( const WeakPointerDependency& dep )
             {
                 WeakPointerDependency old( dep );
                 std::swap( old, mDependency );
@@ -93,7 +93,7 @@ namespace bpipe {
             /*
              * Request embedded value by resolving dependency, if not dependent on any parameter embedded value is given
              */
-            ValueType resolveValueByDependency( ) const
+			PIPE_API_ENTRY ValueType resolveValueByDependency( ) const
             {
             	if( auto pDependency = mDependency.lock() )
             	{

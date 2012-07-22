@@ -5,8 +5,8 @@
  *      Author: blackpanth3r
  */
 
-#include "bpipe/parameter_texture.hpp"
-#include "bpipe/parameterfwd.hpp"
+#include "bpipe/parameter/parameter_texture.hpp"
+#include "bpipe/parameter/parameterfwd.hpp"
 
 namespace bpipe {
 

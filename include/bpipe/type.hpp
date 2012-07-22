@@ -4,7 +4,7 @@
 #include "bpipe/config.hpp"
 
 namespace bpipe {
-	namespace types {
+	namespace type {
 
 enum ParameterType {
 	Scalar,

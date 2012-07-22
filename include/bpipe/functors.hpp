@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include "bpipe/parameter_description.hpp"
+#include "bpipe/parameter/parameter_description.hpp"
 
 namespace bpipe {
 
@@ -15,21 +15,21 @@ namespace bpipe {
     private:
         std::string filter;
     public:
-        explicit MatcherParameterPointerByIdentifier(const std::string& f)
+        PIPE_API_ENTRY explicit MatcherParameterPointerByIdentifier(const std::string& f)
             : filter( f )
         {
         }
 
-        bool operator()(const TypedParameterPointer& pParameter) const
+        PIPE_API_ENTRY bool operator()(const TypedParameterPointer& pParameter) const
         {
             return pParameter && pParameter->getIdentifier( ) == filter;
         }
     };
 
-    template<types::ParameterType Type, typename TypedParameterPointer>
+    template<type::ParameterType Type, typename TypedParameterPointer>
     struct BuilderParameterDescriptionFromParameterEntry : public std::unary_function< std::pair<std::string, TypedParameterPointer>, ParameterDescription>
     {
-    	ParameterDescription operator()( const std::pair<std::string, TypedParameterPointer>& pentry ) const
+    	PIPE_API_ENTRY ParameterDescription operator()( const std::pair<std::string, TypedParameterPointer>& pentry ) const
     	{
 			ParameterDescription description;
     		if( pentry.second )
@@ -41,10 +41,10 @@ namespace bpipe {
     	}
     };
 
-    template<types::ParameterType Type, typename TypedParameterPointer>
+    template<type::ParameterType Type, typename TypedParameterPointer>
     struct BuilderParameterDescriptionFromParameterPointer : public std::unary_function<TypedParameterPointer, ParameterDescription>
     {
-    	ParameterDescription operator()( const TypedParameterPointer& ppointer ) const
+    	PIPE_API_ENTRY ParameterDescription operator()( const TypedParameterPointer& ppointer ) const
     	{
     		if( ppointer )
     		{

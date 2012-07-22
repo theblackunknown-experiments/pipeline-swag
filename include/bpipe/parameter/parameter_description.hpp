@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include "bpipe/types.hpp"
+#include "bpipe/type.hpp"
 
 namespace bpipe {
 
@@ -15,14 +15,14 @@ namespace bpipe {
 	 * - type: expected type for this parameter
 	 */
     struct ParameterDescription {
-    	ParameterDescription( ) = default;
-    	ParameterDescription(const std::string& id, types::ParameterType t)
+    	PIPE_API_ENTRY ParameterDescription( ) = default;
+    	PIPE_API_ENTRY ParameterDescription(const std::string& id, type::ParameterType t)
     		: identifier(id), type(t)
     	{
     	}
 
         std::string          identifier;
-        types::ParameterType type;
+        type::ParameterType type;
     };
 
     typedef ParameterDescription InputDescription;

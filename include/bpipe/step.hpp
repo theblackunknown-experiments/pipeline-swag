@@ -21,15 +21,15 @@ namespace bpipe {
             typedef std::vector<InputDescription>  CollectionInput;
             typedef std::vector<OutputDescription> CollectionOutput;
 
-            explicit Step ();
-            virtual ~Step ();
+            PIPE_API_ENTRY explicit Step ();
+            PIPE_API_ENTRY virtual ~Step ();
 
-            std::string              getDescription( ) const;                                                        //Step's description
+            PIPE_API_ENTRY std::string              getDescription( ) const;                                                        //Step's description
 
-            virtual CollectionInput  getExpectedInputs( ) const = 0;                                                 //Interface to know what is expected inputs
-            virtual CollectionOutput getExpectedOutputs( ) const = 0;                                                //Interface to know what is expected outputs
+            PIPE_API_ENTRY virtual CollectionInput  getExpectedInputs( ) const = 0;                                                 //Interface to know what is expected inputs
+            PIPE_API_ENTRY virtual CollectionOutput getExpectedOutputs( ) const = 0;                                                //Interface to know what is expected outputs
 
-            virtual bool             doJob( const ParameterDatabase& inputs, ParameterDatabase& outputs ) const = 0; //Let this step performs its job, true on success (outputs filled), false on error (outptus untouched)
+            PIPE_API_ENTRY virtual bool             doJob( const ParameterDatabase& inputs, ParameterDatabase& outputs ) const = 0; //Let this step performs its job, true on success (outputs filled), false on error (outptus untouched)
 
         private:
             std::unique_ptr<BPIPE_IMPLEMENTATION(Step)> impl;

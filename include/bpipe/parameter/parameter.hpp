@@ -28,7 +28,7 @@ namespace bpipe {
             /*
              * Build a Parameter by identifier and value
              */
-			PIPE_API_ENTRY explicit ValueParameter (
+			BPIPE_API_ENTRY explicit ValueParameter (
                     const std::string& identifier,
                     const ValueType& default_value = ValueType())
                 : mIdentifier( identifier )
@@ -37,18 +37,18 @@ namespace bpipe {
             {
             }
 
-			PIPE_API_ENTRY ValueParameter ( const ValueParameter& rhs ) = default;
+			BPIPE_API_ENTRY ValueParameter ( const ValueParameter& rhs ) = default;
 
-			PIPE_API_ENTRY ValueParameter& operator=( const ValueParameter& rhs ) = default;
+			BPIPE_API_ENTRY ValueParameter& operator=( const ValueParameter& rhs ) = default;
 
-			PIPE_API_ENTRY virtual ~ValueParameter () { };
+			BPIPE_API_ENTRY virtual ~ValueParameter () { };
 
-			PIPE_API_ENTRY std::string getIdentifier( ) const
+			BPIPE_API_ENTRY std::string getIdentifier( ) const
             {
                 return mIdentifier;
             }
 
-			PIPE_API_ENTRY type::ParameterType getType( ) const
+			BPIPE_API_ENTRY type::ParameterType getType( ) const
             {
                 return ApplicationType;
             }
@@ -57,7 +57,7 @@ namespace bpipe {
              * Set embedded value
              * @note : call to this method will break any existing dependency
              */
-			PIPE_API_ENTRY ValueType setValue( const ValueType&& newValue )
+			BPIPE_API_ENTRY ValueType setValue( const ValueType&& newValue )
             {
                 ValueType old( std::move(newValue) );
                 std::swap(old, mValue);
@@ -65,7 +65,7 @@ namespace bpipe {
                 return std::move(old);
             }
 
-			PIPE_API_ENTRY ValueType setValue( const ValueType& newValue )
+			BPIPE_API_ENTRY ValueType setValue( const ValueType& newValue )
             {
                 ValueType old( newValue );
                 std::swap(old, mValue);
@@ -75,7 +75,7 @@ namespace bpipe {
             /*
              * Request embedded value
              */
-			PIPE_API_ENTRY ValueType getValue( ) const
+			BPIPE_API_ENTRY ValueType getValue( ) const
             {
                 return mValue;
             }
@@ -83,7 +83,7 @@ namespace bpipe {
             /*
              * Set this parameter's dependency
              */
-			PIPE_API_ENTRY WeakPointerDependency setDependency( const WeakPointerDependency& dep )
+			BPIPE_API_ENTRY WeakPointerDependency setDependency( const WeakPointerDependency& dep )
             {
                 WeakPointerDependency old( dep );
                 std::swap( old, mDependency );
@@ -93,7 +93,7 @@ namespace bpipe {
             /*
              * Request embedded value by resolving dependency, if not dependent on any parameter embedded value is given
              */
-			PIPE_API_ENTRY ValueType resolveValueByDependency( ) const
+			BPIPE_API_ENTRY ValueType resolveValueByDependency( ) const
             {
             	if( auto pDependency = mDependency.lock() )
             	{

@@ -26,32 +26,35 @@ namespace bpipe {
 	public:
 		typedef std::vector<ParameterDescription> CollectionDescription;
 
-		PIPE_API_ENTRY explicit ParameterDatabase ( );
-		PIPE_API_ENTRY ~ParameterDatabase ( );
+		BPIPE_API_ENTRY explicit ParameterDatabase ( );
+		BPIPE_API_ENTRY ~ParameterDatabase ( );
 
-		PIPE_API_ENTRY CollectionDescription getParametersDescription( ) const;
+		BPIPE_API_ENTRY ParameterDatabase ( const ParameterDatabase& ) = delete;
+		BPIPE_API_ENTRY ParameterDatabase& operator= ( const ParameterDatabase& ) = delete;
 
-		PIPE_API_ENTRY SharedPointerParameterScalar           setParameter( const SharedPointerParameterScalar&           );
-		PIPE_API_ENTRY SharedPointerParameterText             setParameter( const SharedPointerParameterText&             );
-		PIPE_API_ENTRY SharedPointerParameterGPUTexture       setParameter( const SharedPointerParameterGPUTexture&       );
-		PIPE_API_ENTRY SharedPointerParameter8BitsCPUTexture  setParameter( const SharedPointerParameter8BitsCPUTexture&  );
-		PIPE_API_ENTRY SharedPointerParameter16BitsCPUTexture setParameter( const SharedPointerParameter16BitsCPUTexture& );
-		PIPE_API_ENTRY SharedPointerParameter32BitsCPUTexture setParameter( const SharedPointerParameter32BitsCPUTexture& );
+		BPIPE_API_ENTRY CollectionDescription getParametersDescription( ) const;
+
+		BPIPE_API_ENTRY SharedPointerParameterScalar           setParameter( const SharedPointerParameterScalar&           );
+		BPIPE_API_ENTRY SharedPointerParameterText             setParameter( const SharedPointerParameterText&             );
+		BPIPE_API_ENTRY SharedPointerParameterGPUTexture       setParameter( const SharedPointerParameterGPUTexture&       );
+		BPIPE_API_ENTRY SharedPointerParameter8BitsCPUTexture  setParameter( const SharedPointerParameter8BitsCPUTexture&  );
+		BPIPE_API_ENTRY SharedPointerParameter16BitsCPUTexture setParameter( const SharedPointerParameter16BitsCPUTexture& );
+		BPIPE_API_ENTRY SharedPointerParameter32BitsCPUTexture setParameter( const SharedPointerParameter32BitsCPUTexture& );
 
 		template<typename T>
-		PIPE_API_ENTRY std::weak_ptr<T>   getParameter( const ParameterDescription& ) const;
+		BPIPE_API_ENTRY std::weak_ptr<T>   getParameter( const ParameterDescription& ) const;
 
-		PIPE_API_ENTRY void swap(ParameterDatabase& rhs);
+		BPIPE_API_ENTRY void swap(ParameterDatabase& rhs);
 	private:
 		std::unique_ptr<BPIPE_IMPLEMENTATION(ParameterDatabase)> impl;
     };
 
-    template<> PIPE_API_ENTRY WeakPointerParameterScalar             ParameterDatabase::getParameter<ParameterScalar>           ( const ParameterDescription& ) const;
-    template<> PIPE_API_ENTRY WeakPointerParameterText               ParameterDatabase::getParameter<ParameterText>             ( const ParameterDescription& ) const;
-    template<> PIPE_API_ENTRY WeakPointerParameterGPUTexture         ParameterDatabase::getParameter<ParameterGPUTexture>       ( const ParameterDescription& ) const;
-    template<> PIPE_API_ENTRY WeakPointerParameter8BitsCPUTexture    ParameterDatabase::getParameter<Parameter8BitsCPUTexture>  ( const ParameterDescription& ) const;
-    template<> PIPE_API_ENTRY WeakPointerParameter16BitsCPUTexture   ParameterDatabase::getParameter<Parameter16BitsCPUTexture> ( const ParameterDescription& ) const;
-    template<> PIPE_API_ENTRY WeakPointerParameter32BitsCPUTexture   ParameterDatabase::getParameter<Parameter32BitsCPUTexture> ( const ParameterDescription& ) const;
+    template<> BPIPE_API_ENTRY WeakPointerParameterScalar             ParameterDatabase::getParameter<ParameterScalar>           ( const ParameterDescription& ) const;
+    template<> BPIPE_API_ENTRY WeakPointerParameterText               ParameterDatabase::getParameter<ParameterText>             ( const ParameterDescription& ) const;
+    template<> BPIPE_API_ENTRY WeakPointerParameterGPUTexture         ParameterDatabase::getParameter<ParameterGPUTexture>       ( const ParameterDescription& ) const;
+    template<> BPIPE_API_ENTRY WeakPointerParameter8BitsCPUTexture    ParameterDatabase::getParameter<Parameter8BitsCPUTexture>  ( const ParameterDescription& ) const;
+    template<> BPIPE_API_ENTRY WeakPointerParameter16BitsCPUTexture   ParameterDatabase::getParameter<Parameter16BitsCPUTexture> ( const ParameterDescription& ) const;
+    template<> BPIPE_API_ENTRY WeakPointerParameter32BitsCPUTexture   ParameterDatabase::getParameter<Parameter32BitsCPUTexture> ( const ParameterDescription& ) const;
 
 } /* bpipe */
 

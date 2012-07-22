@@ -4,13 +4,10 @@
 #define BPIPE_IMPLEMENTATION(ClassName) ClassName##Implementation
 
 #ifdef BPIPE_EXPORT_DLL
-#define PIPE_API_ENTRY __decl(dllexport)
+#define BPIPE_API_ENTRY __decl(dllexport)
 #elif BPIPE_IMPORT_DLL
-#define PIPE_API_ENTRY __decl(dllimport)
+#define BPIPE_API_ENTRY __decl(dllimport)
 #endif
-
-#ifndef PIPE_API_ENTRY
-#define PIPE_API_ENTRY
-#endif
-
+#else
+#define BPIPE_API_ENTRY
 #endif

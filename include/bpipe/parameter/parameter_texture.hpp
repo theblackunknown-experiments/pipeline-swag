@@ -37,7 +37,7 @@ namespace bpipe {
 		typedef uint32_t                            Channels;
 		typedef std::size_t                         ByteDepth;
 
-		PIPE_API_ENTRY explicit TextureParameter(
+		BPIPE_API_ENTRY explicit TextureParameter(
 				const std::string& identifier,
 				const std::size_t width, const std::size_t height,
 				const Type type, const Channels channels, const ByteDepth byte_depth,
@@ -50,39 +50,39 @@ namespace bpipe {
 		  {
 		  }
 
-		PIPE_API_ENTRY ~TextureParameter( ) = default;
+		BPIPE_API_ENTRY ~TextureParameter( ) = default;
 
-		PIPE_API_ENTRY std::size_t getWidth( ) const
+		BPIPE_API_ENTRY std::size_t getWidth( ) const
 		{
 			return mDimension.first;
 		}
 
-		PIPE_API_ENTRY std::size_t getHeight( ) const
+		BPIPE_API_ENTRY std::size_t getHeight( ) const
 		{
 			return mDimension.second;
 		}
 
-		PIPE_API_ENTRY Type getType( ) const
+		BPIPE_API_ENTRY Type getType( ) const
 		{
 			return mType;
 		}
 
-		PIPE_API_ENTRY Type getChannels( ) const
+		BPIPE_API_ENTRY Type getChannels( ) const
 		{
 			return mChannels;
 		}
 
-		PIPE_API_ENTRY ByteDepth getByteDepth( ) const
+		BPIPE_API_ENTRY ByteDepth getByteDepth( ) const
 		{
 			return mByteDepth;
 		}
 
-		PIPE_API_ENTRY std::string getSourceFilepath() const
+		BPIPE_API_ENTRY std::string getSourceFilepath() const
 		{
 			return mSourceFilepath;
 		}
 
-		PIPE_API_ENTRY void setSourceFilepath(const std::string& sourceFilepath)
+		BPIPE_API_ENTRY void setSourceFilepath(const std::string& sourceFilepath)
 		{
 			mSourceFilepath = sourceFilepath;
 		}

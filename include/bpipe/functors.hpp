@@ -15,12 +15,12 @@ namespace bpipe {
     private:
         std::string filter;
     public:
-        PIPE_API_ENTRY explicit MatcherParameterPointerByIdentifier(const std::string& f)
+        BPIPE_API_ENTRY explicit MatcherParameterPointerByIdentifier(const std::string& f)
             : filter( f )
         {
         }
 
-        PIPE_API_ENTRY bool operator()(const TypedParameterPointer& pParameter) const
+        BPIPE_API_ENTRY bool operator()(const TypedParameterPointer& pParameter) const
         {
             return pParameter && pParameter->getIdentifier( ) == filter;
         }
@@ -29,7 +29,7 @@ namespace bpipe {
     template<type::ParameterType Type, typename TypedParameterPointer>
     struct BuilderParameterDescriptionFromParameterEntry : public std::unary_function< std::pair<std::string, TypedParameterPointer>, ParameterDescription>
     {
-    	PIPE_API_ENTRY ParameterDescription operator()( const std::pair<std::string, TypedParameterPointer>& pentry ) const
+    	BPIPE_API_ENTRY ParameterDescription operator()( const std::pair<std::string, TypedParameterPointer>& pentry ) const
     	{
 			ParameterDescription description;
     		if( pentry.second )
@@ -44,7 +44,7 @@ namespace bpipe {
     template<type::ParameterType Type, typename TypedParameterPointer>
     struct BuilderParameterDescriptionFromParameterPointer : public std::unary_function<TypedParameterPointer, ParameterDescription>
     {
-    	PIPE_API_ENTRY ParameterDescription operator()( const TypedParameterPointer& ppointer ) const
+    	BPIPE_API_ENTRY ParameterDescription operator()( const TypedParameterPointer& ppointer ) const
     	{
     		if( ppointer )
     		{

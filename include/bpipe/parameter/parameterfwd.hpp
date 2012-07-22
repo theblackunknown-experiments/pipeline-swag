@@ -11,8 +11,13 @@
 #include "bpipe/type.hpp"
 
 namespace bpipe {
+
+	struct ParameterDescription;
 	template<typename DataType, type::ParameterType type> class ValueParameter;
-	template<typename DataContainer>                       class TextureParameter;
+	template<typename DataContainer>                      class TextureParameter;
+
+    typedef ParameterDescription                                     InputDescription;
+    typedef ParameterDescription                                     OutputDescription;
 
     typedef ValueParameter<float,       type::Scalar>                ParameterScalar;
     typedef ValueParameter<std::string, type::Text>                  ParameterText;

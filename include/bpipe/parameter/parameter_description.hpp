@@ -15,18 +15,16 @@ namespace bpipe {
 	 * - type: expected type for this parameter
 	 */
     struct ParameterDescription {
-    	PIPE_API_ENTRY ParameterDescription( ) = default;
-    	PIPE_API_ENTRY ParameterDescription(const std::string& id, type::ParameterType t)
+    	BPIPE_API_ENTRY ParameterDescription( ) = default;
+    	BPIPE_API_ENTRY ParameterDescription(const std::string& id, type::ParameterType t)
     		: identifier(id), type(t)
     	{
     	}
 
-        std::string          identifier;
+        std::string         identifier;
         type::ParameterType type;
     };
 
-    typedef ParameterDescription InputDescription;
-    typedef ParameterDescription OutputDescription;
 } /* bpipe */
 
 #endif

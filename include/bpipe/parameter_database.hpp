@@ -4,6 +4,7 @@
 #include "bpipe/config.hpp"
 
 #include <memory>
+#include <vector>
 #include <algorithm>
 
 #include "bpipe/parameter_description.hpp"
@@ -14,40 +15,49 @@ namespace bpipe {
 }
 
 namespace bpipe {
-    class ParameterDatabase {
-        public:
-            explicit ParameterDatabase ( );
-            ParameterDatabase( const ParameterDatabase& rhs );
-            ParameterDatabase( const ParameterDatabase&& rhs );
-            ParameterDatabase& operator=( const ParameterDatabase& rhs );
-            ParameterDatabase& operator=( const ParameterDatabase&& rhs );
 
-            ~ParameterDatabase ( );
+	/*
+	 * Storage class for parameters
+	 * - enable retrieval by name for an expected type parameter
+	 * - can query the database to discover available parameter and corresponding type
+	 */
+    class ParameterDatabase
+    {
+	public:
+		typedef std::vector<ParameterDescription> CollectionDescription;
 
-            template<typename T>
-            std::shared_ptr<T> setParameter( const std::shared_ptr<T>& );
+		explicit ParameterDatabase ( );
+		~ParameterDatabase ( );
 
-            template<typename T>
-            std::weak_ptr<T>   getParameter( const ParameterDescription& );
+		CollectionDescription getParametersDescription( ) const;
 
-            void swap(ParameterDatabase& rhs);
-        private:
-            std::unique_ptr<BPIPE_IMPLEMENTATION(ParameterDatabase)> impl;
+		SharedPointerParameterScalar           setParameter( const SharedPointerParameterScalar&           );
+		SharedPointerParameterText             setParameter( const SharedPointerParameterText&             );
+		SharedPointerParameterGPUTexture       setParameter( const SharedPointerParameterGPUTexture&       );
+		SharedPointerParameter8BitsCPUTexture  setParameter( const SharedPointerParameter8BitsCPUTexture&  );
+		SharedPointerParameter16BitsCPUTexture setParameter( const SharedPointerParameter16BitsCPUTexture& );
+		SharedPointerParameter32BitsCPUTexture setParameter( const SharedPointerParameter32BitsCPUTexture& );
+
+		template<typename T>
+		std::weak_ptr<T>   getParameter( const ParameterDescription& ) const;
+
+		void swap(ParameterDatabase& rhs);
+	private:
+		std::unique_ptr<BPIPE_IMPLEMENTATION(ParameterDatabase)> impl;
     };
-    
-    template<> std::shared_ptr<ParameterScalar> ParameterDatabase::setParameter<ParameterScalar>( const std::shared_ptr<ParameterScalar>& );
-    
-    template<> std::weak_ptr<ParameterScalar> ParameterDatabase::getParameter<ParameterScalar>( const ParameterDescription& );
+
+    template<> WeakPointerParameterScalar             ParameterDatabase::getParameter<ParameterScalar>           ( const ParameterDescription& ) const;
+    template<> WeakPointerParameterText               ParameterDatabase::getParameter<ParameterText>             ( const ParameterDescription& ) const;
+    template<> WeakPointerParameterGPUTexture         ParameterDatabase::getParameter<ParameterGPUTexture>       ( const ParameterDescription& ) const;
+    template<> WeakPointerParameter8BitsCPUTexture    ParameterDatabase::getParameter<Parameter8BitsCPUTexture>  ( const ParameterDescription& ) const;
+    template<> WeakPointerParameter16BitsCPUTexture   ParameterDatabase::getParameter<Parameter16BitsCPUTexture> ( const ParameterDescription& ) const;
+    template<> WeakPointerParameter32BitsCPUTexture   ParameterDatabase::getParameter<Parameter32BitsCPUTexture> ( const ParameterDescription& ) const;
 
 } /* bpipe */
 
 namespace std
 {
-    template<>
-    void swap(bpipe::ParameterDatabase& lhs, bpipe::ParameterDatabase& rhs)
-    {
-        lhs.swap(rhs);
-    }
+    template<> void swap<bpipe::ParameterDatabase>(bpipe::ParameterDatabase& lhs, bpipe::ParameterDatabase& rhs);
 } /* std */
 
 #endif

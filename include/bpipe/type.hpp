@@ -8,6 +8,7 @@ namespace bpipe {
 
 enum class ParameterType : unsigned int
 {
+	Integer,
 	Scalar,
 	Texture,
 	Text,

@@ -27,7 +27,7 @@ namespace bpipe {
 	private:
         BPIPE_API_ENTRY bool doJob( const ParameterDatabase& inputs, ParameterDatabase& outputs ) const; //Let this step performs its job, true on success (outputs filled), false on error (outputs untouched)
 
-        std::unique_ptr<BPIPE_IMPLEMENTATION(FixedStep)> impl;
+        BPIPE_IMPLEMENTATION(FixedStep)* impl;
 	};
 
 }  // namespace bpipe

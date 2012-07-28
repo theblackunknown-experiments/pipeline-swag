@@ -45,6 +45,8 @@ namespace bpipe {
             template<typename T>
             std::weak_ptr<T>   getParameter( const ParameterDescription& ) const;
 
+            void               insert( const BPIPE_IMPLEMENTATION(ParameterDatabase)& );
+
         private:
             CollectionParameterScalar           mParameterScalars;
             CollectionParameterText             mParameterTexts;

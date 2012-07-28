@@ -145,4 +145,14 @@ namespace bpipe {
         return typeCheckedDataRetrieval(mParameter32BitsCPUTextures, type::ParameterType::Texture, pdesc);
     }
 
+    void BPIPE_IMPLEMENTATION(ParameterDatabase)::insert( const BPIPE_IMPLEMENTATION(ParameterDatabase)& rhs )
+	{
+    	mParameterScalars.insert( rhs.mParameterScalars.begin(), rhs.mParameterScalars.end() );
+    	mParameterTexts.insert( rhs.mParameterTexts.begin(), rhs.mParameterTexts.end() );
+    	mParameterGPUTextures.insert( rhs.mParameterGPUTextures.begin(), rhs.mParameterGPUTextures.end() );
+    	mParameter8BitsCPUTextures.insert( rhs.mParameter8BitsCPUTextures.begin(), rhs.mParameter8BitsCPUTextures.end() );
+    	mParameter16BitsCPUTextures.insert( rhs.mParameter16BitsCPUTextures.begin(), rhs.mParameter16BitsCPUTextures.end() );
+    	mParameter32BitsCPUTextures.insert( rhs.mParameter32BitsCPUTextures.begin(), rhs.mParameter32BitsCPUTextures.end() );
+	}
+
 } /* bpipe */

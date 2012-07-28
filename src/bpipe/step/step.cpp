@@ -19,6 +19,7 @@ Step::Step(const std::string& description, const CollectionInput& inputs, const 
 
 Step::~Step( )
 {
+	delete impl;
 }
 
 std::string Step::getDescription( ) const

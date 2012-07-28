@@ -19,11 +19,12 @@ FixedStep::FixedStep(const std::string& description, const CollectionInput& inpu
 
 FixedStep::~FixedStep( )
 {
+	delete impl;
 }
 
 bool FixedStep::doJob( const ParameterDatabase& inputs, ParameterDatabase& outputs ) const
 {
-	auto implementation = impl->getImplementation();
+	const auto implementation = impl->getImplementation();
 	if( implementation )
 	{
 		return implementation(inputs, outputs);

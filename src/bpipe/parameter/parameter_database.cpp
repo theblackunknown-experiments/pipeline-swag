@@ -1,6 +1,8 @@
 #include "bpipe/parameter/parameter_database.hpp"
 #include "bpipe/parameter/impl/parameter_database_impl.hpp"
 
+#include "bpipe/parameter/parameter_description.hpp"
+
 namespace bpipe {
 
 ParameterDatabase::ParameterDatabase( )
@@ -126,6 +128,12 @@ WeakPointerParameter32BitsCPUTexture ParameterDatabase::getParameter<Parameter32
 		return WeakPointerParameter32BitsCPUTexture();
 	}
 }
+
+void ParameterDatabase::insert( ParameterDatabase& rhs )
+{
+	impl->insert( *rhs.impl );
+}
+
 
 void ParameterDatabase::swap( ParameterDatabase& rhs )
 {

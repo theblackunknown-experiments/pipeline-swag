@@ -7,10 +7,10 @@
 #include <vector>
 #include <algorithm>
 
-#include "bpipe/parameter/parameter_description.hpp"
 #include "bpipe/parameter/parameterfwd.hpp"
 
 namespace bpipe {
+	struct ParameterDescription;
     class BPIPE_IMPLEMENTATION(ParameterDatabase);
 }
 
@@ -41,6 +41,7 @@ namespace bpipe {
 		template<typename T>
 		BPIPE_API_ENTRY std::weak_ptr<T>   getParameter( const ParameterDescription& ) const;
 
+		BPIPE_API_ENTRY void insert(ParameterDatabase& rhs);
 		BPIPE_API_ENTRY void swap(ParameterDatabase& rhs);
 	private:
 		ParameterDatabase ( const ParameterDatabase& );

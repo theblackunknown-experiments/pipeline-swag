@@ -10,8 +10,8 @@
 
 namespace bpipe {
 
-template class ValueParameter<float,       type::Scalar>;
-template class ValueParameter<std::string, type::Text>;
+template class ValueParameter<float,       type::ParameterType::Scalar>;
+template class ValueParameter<std::string, type::ParameterType::Text>;
 
 }  // namespace bpipe
 

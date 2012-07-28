@@ -65,17 +65,17 @@ namespace bpipe {
 	{
     	CollectionDescription pdescriptions( mParameterScalars.size() + mParameterTexts.size() + mParameterGPUTextures.size() + mParameter8BitsCPUTextures.size() + mParameter16BitsCPUTextures.size() + mParameter32BitsCPUTextures.size() );
     	auto description_iterator = pdescriptions.begin();
-    	std::transform(mParameterScalars.begin(), mParameterScalars.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::Scalar, CollectionParameterScalar::mapped_type>());
+    	std::transform(mParameterScalars.begin(), mParameterScalars.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::ParameterType::Scalar, CollectionParameterScalar::mapped_type>());
     	std::advance(description_iterator, mParameterScalars.size());
-    	std::transform(mParameterTexts.begin(), mParameterTexts.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::Text, CollectionParameterText::mapped_type>());
+    	std::transform(mParameterTexts.begin(), mParameterTexts.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::ParameterType::Text, CollectionParameterText::mapped_type>());
     	std::advance(description_iterator, mParameterTexts.size());
-    	std::transform(mParameterGPUTextures.begin(), mParameterGPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::Texture, CollectionParameterGPUTexture::mapped_type>());
+    	std::transform(mParameterGPUTextures.begin(), mParameterGPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::ParameterType::Texture, CollectionParameterGPUTexture::mapped_type>());
     	std::advance(description_iterator, mParameterGPUTextures.size());
-    	std::transform(mParameter8BitsCPUTextures.begin(), mParameter8BitsCPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::Texture, CollectionParameter8BitsCPUTexture::mapped_type>());
+    	std::transform(mParameter8BitsCPUTextures.begin(), mParameter8BitsCPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::ParameterType::Texture, CollectionParameter8BitsCPUTexture::mapped_type>());
     	std::advance(description_iterator, mParameter8BitsCPUTextures.size());
-    	std::transform(mParameter16BitsCPUTextures.begin(), mParameter16BitsCPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::Texture, CollectionParameter16BitsCPUTexture::mapped_type>());
+    	std::transform(mParameter16BitsCPUTextures.begin(), mParameter16BitsCPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::ParameterType::Texture, CollectionParameter16BitsCPUTexture::mapped_type>());
     	std::advance(description_iterator, mParameter16BitsCPUTextures.size());
-    	std::transform(mParameter32BitsCPUTextures.begin(), mParameter32BitsCPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::Texture, CollectionParameter32BitsCPUTexture::mapped_type>());
+    	std::transform(mParameter32BitsCPUTextures.begin(), mParameter32BitsCPUTextures.end(), description_iterator, BuilderParameterDescriptionFromParameterEntry<type::ParameterType::Texture, CollectionParameter32BitsCPUTexture::mapped_type>());
     	return pdescriptions;
 	}
 
@@ -112,37 +112,37 @@ namespace bpipe {
     template<>
     WeakPointerParameterScalar BPIPE_IMPLEMENTATION(ParameterDatabase)::getParameter<ParameterScalar>( const ParameterDescription& pdesc ) const
     {
-        return typeCheckedDataRetrieval(mParameterScalars, type::Scalar, pdesc);
+        return typeCheckedDataRetrieval(mParameterScalars, type::ParameterType::Scalar, pdesc);
     }
 
     template<>
     WeakPointerParameterText BPIPE_IMPLEMENTATION(ParameterDatabase)::getParameter<ParameterText>( const ParameterDescription& pdesc ) const
     {
-        return typeCheckedDataRetrieval(mParameterTexts, type::Text, pdesc);
+        return typeCheckedDataRetrieval(mParameterTexts, type::ParameterType::Text, pdesc);
     }
 
     template<>
     WeakPointerParameterGPUTexture BPIPE_IMPLEMENTATION(ParameterDatabase)::getParameter<ParameterGPUTexture>( const ParameterDescription& pdesc ) const
     {
-        return typeCheckedDataRetrieval(mParameterGPUTextures, type::Texture, pdesc);
+        return typeCheckedDataRetrieval(mParameterGPUTextures, type::ParameterType::Texture, pdesc);
     }
 
     template<>
     WeakPointerParameter8BitsCPUTexture BPIPE_IMPLEMENTATION(ParameterDatabase)::getParameter<Parameter8BitsCPUTexture>( const ParameterDescription& pdesc ) const
     {
-        return typeCheckedDataRetrieval(mParameter8BitsCPUTextures, type::Texture, pdesc);
+        return typeCheckedDataRetrieval(mParameter8BitsCPUTextures, type::ParameterType::Texture, pdesc);
     }
 
     template<>
     WeakPointerParameter16BitsCPUTexture BPIPE_IMPLEMENTATION(ParameterDatabase)::getParameter<Parameter16BitsCPUTexture>( const ParameterDescription& pdesc ) const
     {
-        return typeCheckedDataRetrieval(mParameter16BitsCPUTextures, type::Texture, pdesc);
+        return typeCheckedDataRetrieval(mParameter16BitsCPUTextures, type::ParameterType::Texture, pdesc);
     }
 
     template<>
     WeakPointerParameter32BitsCPUTexture BPIPE_IMPLEMENTATION(ParameterDatabase)::getParameter<Parameter32BitsCPUTexture>( const ParameterDescription& pdesc ) const
     {
-        return typeCheckedDataRetrieval(mParameter32BitsCPUTextures, type::Texture, pdesc);
+        return typeCheckedDataRetrieval(mParameter32BitsCPUTextures, type::ParameterType::Texture, pdesc);
     }
 
 } /* bpipe */

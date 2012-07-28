@@ -52,7 +52,7 @@ SharedPointerParameter32BitsCPUTexture ParameterDatabase::setParameter( const Sh
 template<>
 WeakPointerParameterScalar ParameterDatabase::getParameter<ParameterScalar> ( const ParameterDescription&  description ) const
 {
-	if( type::Scalar == description.type )
+	if( type::ParameterType::Scalar == description.type )
 	{
 		return impl->getParameter<ParameterScalar>(description);
 	}
@@ -65,7 +65,7 @@ WeakPointerParameterScalar ParameterDatabase::getParameter<ParameterScalar> ( co
 template<>
 WeakPointerParameterText ParameterDatabase::getParameter<ParameterText> ( const ParameterDescription&  description ) const
 {
-	if( type::Text == description.type )
+	if( type::ParameterType::Text == description.type )
 	{
 		return impl->getParameter<ParameterText>(description);
 	}
@@ -78,7 +78,7 @@ WeakPointerParameterText ParameterDatabase::getParameter<ParameterText> ( const 
 template<>
 WeakPointerParameterGPUTexture ParameterDatabase::getParameter<ParameterGPUTexture> ( const ParameterDescription&  description ) const
 {
-	if( type::Texture == description.type )
+	if( type::ParameterType::Texture == description.type )
 	{
 		return impl->getParameter<ParameterGPUTexture>(description);
 	}
@@ -91,7 +91,7 @@ WeakPointerParameterGPUTexture ParameterDatabase::getParameter<ParameterGPUTextu
 template<>
 WeakPointerParameter8BitsCPUTexture ParameterDatabase::getParameter<Parameter8BitsCPUTexture> ( const ParameterDescription&  description ) const
 {
-	if( type::Texture == description.type )
+	if( type::ParameterType::Texture == description.type )
 	{
 		return impl->getParameter<Parameter8BitsCPUTexture>(description);
 	}
@@ -104,7 +104,7 @@ WeakPointerParameter8BitsCPUTexture ParameterDatabase::getParameter<Parameter8Bi
 template<>
 WeakPointerParameter16BitsCPUTexture ParameterDatabase::getParameter<Parameter16BitsCPUTexture> ( const ParameterDescription&  description ) const
 {
-	if( type::Texture == description.type )
+	if( type::ParameterType::Texture == description.type )
 	{
 		return impl->getParameter<Parameter16BitsCPUTexture>(description);
 	}
@@ -117,7 +117,7 @@ WeakPointerParameter16BitsCPUTexture ParameterDatabase::getParameter<Parameter16
 template<>
 WeakPointerParameter32BitsCPUTexture ParameterDatabase::getParameter<Parameter32BitsCPUTexture> ( const ParameterDescription&  description ) const
 {
-	if( type::Texture == description.type )
+	if( type::ParameterType::Texture == description.type )
 	{
 		return impl->getParameter<Parameter32BitsCPUTexture>(description);
 	}

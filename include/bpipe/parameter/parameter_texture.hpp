@@ -29,7 +29,7 @@ namespace bpipe {
 	 * - ByteDepth : Precision range used for channel storage (8, 16, 32 bits)
 	 */
 	template< typename DataContainer >
-	class TextureParameter : public ValueParameter< DataContainer, type::Texture>
+	class TextureParameter : public ValueParameter< DataContainer, type::ParameterType::Texture>
 	{
 	public:
 		typedef std::pair<std::size_t, std::size_t> Dimension;
@@ -42,7 +42,7 @@ namespace bpipe {
 				const std::size_t width, const std::size_t height,
 				const Type type, const Channels channels, const ByteDepth byte_depth,
 				const DataContainer& data)
-		  : ValueParameter<DataContainer, type::Texture>(identifier, data)
+		  : ValueParameter<DataContainer, type::ParameterType::Texture>(identifier, data)
 		  , mDimension( std::make_pair(width, height) )
 		  , mType( type )
 		  , mChannels( channels )

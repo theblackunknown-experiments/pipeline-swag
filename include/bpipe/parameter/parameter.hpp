@@ -37,11 +37,26 @@ namespace bpipe {
             {
             }
 
-			BPIPE_API_ENTRY ValueParameter ( const ValueParameter& rhs ) = default;
+			BPIPE_API_ENTRY ValueParameter ( const ValueParameter& rhs )
+				: mIdentifier( rhs.mIdentifier )
+				, mDependency( rhs.mDependency )
+				, mValue     ( rhs.mValue )
+			{
 
-			BPIPE_API_ENTRY ValueParameter& operator=( const ValueParameter& rhs ) = default;
+			}
 
-			BPIPE_API_ENTRY virtual ~ValueParameter () { };
+			BPIPE_API_ENTRY ValueParameter& operator=( const ValueParameter& rhs )
+			{
+				mIdentifier = rhs.mIdentifier;
+				mDependency = rhs.mDependency;
+				mValue      = rhs.mValue;
+				return *this;
+			}
+
+			BPIPE_API_ENTRY virtual ~ValueParameter ()
+			{
+
+			}
 
 			BPIPE_API_ENTRY std::string getIdentifier( ) const
             {

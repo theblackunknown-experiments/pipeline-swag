@@ -10,7 +10,7 @@
 
 #include "bpipe/config.hpp"
 
-#include <cinttypes>
+#include <cstdint>
 #include <string>
 #include <utility>
 #include <memory>
@@ -47,10 +47,8 @@ namespace bpipe {
 		  , mType( type )
 		  , mChannels( channels )
 		  , mByteDepth( byte_depth )
-		  {
-		  }
-
-		BPIPE_API_ENTRY ~TextureParameter( ) = default;
+		{
+		}
 
 		BPIPE_API_ENTRY std::size_t getWidth( ) const
 		{

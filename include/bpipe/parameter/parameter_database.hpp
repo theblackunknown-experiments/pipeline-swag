@@ -29,9 +29,6 @@ namespace bpipe {
 		BPIPE_API_ENTRY explicit ParameterDatabase ( );
 		BPIPE_API_ENTRY ~ParameterDatabase ( );
 
-		BPIPE_API_ENTRY ParameterDatabase ( const ParameterDatabase& ) = delete;
-		BPIPE_API_ENTRY ParameterDatabase& operator= ( const ParameterDatabase& ) = delete;
-
 		BPIPE_API_ENTRY CollectionDescription getParametersDescription( ) const;
 
 		BPIPE_API_ENTRY SharedPointerParameterScalar           setParameter( const SharedPointerParameterScalar&           );
@@ -46,6 +43,9 @@ namespace bpipe {
 
 		BPIPE_API_ENTRY void swap(ParameterDatabase& rhs);
 	private:
+		ParameterDatabase ( const ParameterDatabase& );
+		ParameterDatabase& operator= ( const ParameterDatabase& );
+
 		std::unique_ptr<BPIPE_IMPLEMENTATION(ParameterDatabase)> impl;
     };
 

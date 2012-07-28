@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <cinttypes>
+#include <cstdint>
 #include <memory>
 
 #include "bpipe/config.hpp"
